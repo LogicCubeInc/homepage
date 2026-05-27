@@ -1,5 +1,7 @@
 LOGICCUBE's New HomePage under construction
+
 www.logiccube.co.kr 은 예스닉을 통해 domain 등록되어 있습니다.
+
 https://yesnic.com/ 로그인후 
 네임서버 고급설정 >> CNAME 레코드 관리를 통해 현재의 github에 등록된 index.html로 연결됩니다.
 
