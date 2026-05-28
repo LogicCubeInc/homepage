@@ -13,7 +13,6 @@ https://yesnic.com/ 로그인후
 호스트명 (또는 서브도메인): www <br>
 
 CNAME (또는 연결주소): logiccubeinc.github.io
-(만약 뒤에 점을 찍으라는 안내나 에러 메시지가 뜨지 않는다면 점 없이 깔끔하게 주소만 적으시면 됩니다.)
 
 <img width="731" height="519" alt="image" src="https://github.com/user-attachments/assets/a8ae917b-4d5b-40fa-a852-4b9e57dc6d2f" />
 <pre>
