@@ -2225,7 +2225,10 @@
 
   function applyLang(lang, userSelected = false) {
     const dict = i18n[lang] || i18n['ko'];
-    const yearsInBiz = new Date().getFullYear() - 2003;
+    const founded = new Date(2003, 9, 30); // 2003-10-30
+    const now = new Date();
+    let yearsInBiz = now.getFullYear() - founded.getFullYear();
+    if (now < new Date(now.getFullYear(), 9, 30)) yearsInBiz--;
     const statYears = document.getElementById('stat-years');
     if (statYears) statYears.textContent = yearsInBiz;
     document.querySelectorAll('[data-i18n]').forEach(el => {
