@@ -1759,8 +1759,10 @@
   }
 
   /* ───────────── MOBILE 가로 (landscape · 높이 500px 이하) ─────────────
-     PC처럼 자연 스크롤 — 섹션 높이 고정 없이 콘텐츠 흐름대로 스크롤 */
-  @media (max-height: 750px) and (max-width: 1100px) and (orientation: landscape) {
+     PC처럼 자연 스크롤 — 섹션 높이 고정 없이 콘텐츠 흐름대로 스크롤
+     orientation:landscape 대신 min-aspect-ratio:1/1 사용 — 네이버 인앱 브라우저에서
+     orientation 미지원 시에도 가로 레이아웃이 정상 적용되도록 함 */
+  @media (max-height: 750px) and (max-width: 1100px) and (min-aspect-ratio: 1/1) {
 
     /* ── 섹션 높이 잠금 전면 해제 (세로모드 100lvh 고정 덮어쓰기) ── */
     .section,
