@@ -43,4 +43,5 @@ Custom domain 칸에 이미 www.logiccube.co.kr이 들어가 있을 것입니다
 
 <img width="670" height="711" alt="image" src="https://github.com/user-attachments/assets/445e01c0-a3c4-47d6-bc6b-671d4828ee24" />
 
-
+NAVER 검색시 우선검색을 위한 SEARCH ADVISOR 등록
+<img width="1276" height="826" alt="image" src="https://github.com/user-attachments/assets/bc69eaa0-0cfb-4a2b-a799-c8b3315dee3f" />
