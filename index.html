@@ -1030,6 +1030,9 @@
     border: 1px solid rgba(255,255,255,0.15);
     transition: all 0.25s; cursor: default;
     min-height: 54px;
+    /* 다크모드 강제 반전 추가 차단 */
+    forced-color-adjust: none;
+    -webkit-forced-color-adjust: none;
   }
   .partner-chip:hover {
     background-color: rgba(255,255,255,1);
@@ -1043,8 +1046,10 @@
     /* multiply 제거: 로고 PNG에 흰 배경이 있으므로, 칩이 다크모드로 검게 변해도
        로고의 흰 배경이 칩을 덮어 정상 표시됨 (multiply면 흰배경×검정=검정이 되어버림) */
     mix-blend-mode: normal;
-    filter: none;
+    filter: none !important;
     transition: opacity 0.25s;
+    forced-color-adjust: none;
+    -webkit-forced-color-adjust: none;
   }
   .partner-chip:hover img {
     opacity: 0.85;
