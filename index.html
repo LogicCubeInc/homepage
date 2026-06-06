@@ -1024,13 +1024,14 @@
   .partner-chip {
     display: flex; align-items: center; justify-content: center;
     padding: 10px 8px; border-radius: 10px;
+    /* ★ 근본해결: 그라데이션 배경이미지는 다크모드 반전 대상에서 제외됨 */
     background-color: #ffffff;
-    /* 배경을 그라데이션(이미지)로 줘서 삼성인터넷 등 강제 다크모드의 반전을 회피 → 흰색 유지 */
-    background-image: linear-gradient(#ffffff, #ffffff);
+    background-image: linear-gradient(to bottom, #ffffff 0%, #ffffff 100%);
     border: 1px solid rgba(255,255,255,0.15);
     transition: all 0.25s; cursor: default;
     min-height: 54px;
-    /* 다크모드 강제 반전 추가 차단 */
+    /* ★ 별도 합성 레이어로 분리 → 삼성인터넷 다크모드 반전 알고리즘 우회 */
+    isolation: isolate;
     forced-color-adjust: none;
     -webkit-forced-color-adjust: none;
   }
@@ -1043,13 +1044,28 @@
   .partner-chip img {
     max-width: 100%; max-height: 30px;
     object-fit: contain;
-    /* multiply 제거: 로고 PNG에 흰 배경이 있으므로, 칩이 다크모드로 검게 변해도
-       로고의 흰 배경이 칩을 덮어 정상 표시됨 (multiply면 흰배경×검정=검정이 되어버림) */
     mix-blend-mode: normal;
-    filter: none !important;
+    filter: none;
     transition: opacity 0.25s;
+    /* 이미지 영역 흰배경 보강 */
+    background: #ffffff;
+    border-radius: 4px;
     forced-color-adjust: none;
     -webkit-forced-color-adjust: none;
+  }
+
+  /* ★ 삼성인터넷/다크모드 강제 흰배경 유지 ★ */
+  @media (prefers-color-scheme: dark) {
+    .partner-chip {
+      background-color: #ffffff !important;
+      background-image: linear-gradient(#ffffff, #ffffff) !important;
+    }
+  }
+  /* 삼성인터넷 야간모드 전용 클래스 대응 */
+  html.theme-dark .partner-chip,
+  [data-theme="dark"] .partner-chip {
+    background-color: #ffffff !important;
+    background-image: linear-gradient(#ffffff, #ffffff) !important;
   }
   .partner-chip:hover img {
     opacity: 0.85;
@@ -1276,7 +1292,7 @@
       height: 247px !important;
       order: 1;
       flex-shrink: 0;
-      margin-top: 2px !important;
+      margin-top: 1px !important;
       background: var(--deep-blue) !important;
       overflow: hidden !important;
       position: relative !important;
@@ -1349,7 +1365,7 @@
     /* 6페이지 Technology */
     #technology { padding-top: 20px !important; padding-bottom: 8px !important; }
     #technology > div { padding: 2px 16px 0 16px !important; margin-top: 0 !important; justify-content: flex-start !important; }
-    #technology .section-title { margin-bottom: 6px !important; font-size: clamp(26px, 8vw, 40px) !important; }
+    #technology .section-title { margin-bottom: 6px !important; font-size: clamp(25px, 7.6vw, 38px) !important; }
     .tech-grid {
       grid-template-columns: 1fr !important;
       gap: 6px !important;
@@ -1357,10 +1373,10 @@
     .tech-card { padding: 0 !important; }
     .tech-head { padding: 12px 14px !important; }
     .tech-body { padding: 10px 14px !important; }
-    .tech-icon { font-size: 20px !important; margin-bottom: 2px !important; }
-    .tech-name { font-size: 21px !important; }
+    .tech-icon { font-size: 19px !important; margin-bottom: 2px !important; }
+    .tech-name { font-size: 20px !important; }
     .tech-title { font-size: 15px !important; margin-bottom: 3px !important; }
-    .tech-desc { font-size: 19.5px !important; line-height: 1.4; margin-bottom: 0 !important; }
+    .tech-desc { font-size: 19.1px !important; line-height: 1.4; margin-bottom: 0 !important; color: #2a3340 !important; }
     /* Throughput/Availability/Latency 바 숨김 */
     .tech-bar-wrap { display: none !important; }
     #technology [style*="flow-box"],
