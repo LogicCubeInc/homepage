@@ -326,7 +326,7 @@
   #about .about-left {
     position: relative; z-index: 2;
     display: flex; flex-direction: column; justify-content: center;
-    padding: 80px 56px 80px 60px;
+    padding: 80px 42px 80px 60px;
     background: #001428; /* 배경색 추가 */
   }
   #about .about-left .section-tag { color: var(--neon); }
@@ -724,7 +724,7 @@
   </div>
 
   <div class="about-right" style="grid-column:2; grid-row:1;
-    display:flex; align-items:center; justify-content:center; overflow:hidden; padding:60px 0 20px;">
+    display:flex; align-items:center; justify-content:center; overflow:hidden; padding:60px 40px 20px 0;">
     <img src="public/images/system_flow.png" alt="System Flow"
          style="width:100%; object-fit:contain; max-height:90vh; image-orientation:none;">
   </div>
@@ -919,26 +919,24 @@
 
     <!-- 데이터 흐름도 -->
     <div style="background:white; border-radius:16px; padding:14px 24px; border:1px solid #e2eaf4;">
-      <div class="flow-title" style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--cobalt); margin-bottom:10px; font-family:'Montserrat',sans-serif;">Data Flow Architecture</div>
+      <div class="flow-title" style="font-size:11px; font-weight:700; letter-spacing:2px; color:var(--cobalt); margin-bottom:10px; font-family:'Montserrat',sans-serif;">Data Flow Architecture</div>
       <div class="flow-body" style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
         <div class="flow-box" style="background:#f0f4ff;" data-i18n="flow_biz">승인 시스템</div>
         <div class="flow-arrow">→</div>
-        <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
-          <div class="flow-box" style="background:linear-gradient(135deg,var(--deep-blue),var(--cobalt)); color:white; border-color:var(--cobalt);">
-            Cube*FEP<br><span style="font-size:10px; opacity:0.7;" data-i18n="flow_fep_sub">대외계 솔루션</span>
-          </div>
-          <div style="display:flex; gap:6px;">
-            <div class="flow-tag" style="background:rgba(0,191,255,0.1); color:var(--cobalt);">Fail-Over</div>
-            <div class="flow-tag" style="background:rgba(0,191,255,0.1); color:var(--cobalt);">SAF</div>
-            <div class="flow-tag" style="background:rgba(0,191,255,0.1); color:var(--cobalt);">ISO8583</div>
-          </div>
+        <div class="flow-box" style="background:linear-gradient(135deg,var(--deep-blue),var(--cobalt)); color:white; border-color:var(--cobalt);">
+          Cube*FEP<br><span style="font-size:10px; opacity:0.7;" data-i18n="flow_fep_sub">대외계 솔루션</span>
         </div>
         <div class="flow-arrow">→</div>
-        <div class="flow-box" style="background:#f0f4ff;">VISA / Master</div>
+        <div class="flow-box" style="background:#f0f4ff;">Int'l Card Brands</div>
         <div class="flow-arrow" style="color:var(--gray-mid)">↕</div>
         <div class="flow-box" style="background:#f0f4ff;" data-i18n="flow_van">VAN사</div>
         <div class="flow-arrow" style="color:var(--gray-mid)">↕</div>
         <div class="flow-box" style="background:#f0f4ff;" data-i18n="flow_related">대외기관</div>
+        <div style="width:100%; display:flex; gap:6px; margin-top:6px;">
+          <div class="flow-tag" style="background:rgba(0,191,255,0.1); color:var(--cobalt);">ISO8583</div>
+          <div class="flow-tag" style="background:rgba(0,191,255,0.1); color:var(--cobalt);">SAF</div>
+          <div class="flow-tag" style="background:rgba(0,191,255,0.1); color:var(--cobalt);">Fail-Over</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1742,7 +1740,7 @@
     .feat-text h4 { font-size: 12px !important; }    /* 10 → 12 */
     .feat-text p  { font-size: 10.8px !important; }  /* 9 → 10.8 */
     #about .about-right { height: 216px !important; padding-top: 0 !important; margin-top: 10px !important; } /* height: ×1.2, gap÷2(62→31px), img×1.05 */
-    #about .about-right img { transform: scale(0.9975) !important; transform-origin: center center !important; }
+    #about .about-right img { transform: scale(0.9776) !important; transform-origin: center center !important; }
 
     /* 4페이지 Solutions: 제목 1.5배, 박스 내 본문 줄간격 약 절반(1.8→1.4) */
     #solutions .section-title { font-size: clamp(22.5px, 6.75vw, 30px) !important; }  /* ×1.5 */
@@ -2352,7 +2350,7 @@
     window.addEventListener('resize', syncPhaseBTop);
 
     function startPhraseLoop(duration) {
-      const half = 3000;
+      const half = 2700;
       clearTimeout(phraseTimer);
       syncPhaseBTop();
       // 초기: A 즉시 표시 (transition 없이)
