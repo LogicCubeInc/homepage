@@ -25,57 +25,23 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://logiccubeinc.github.io/homepage/public/images/shlee_kor_id.png?v=3">
 
+<!-- 미리보기를 탭하면 곧바로 회사 홈페이지로 이동 (크롤러는 위 OG 태그만 읽고 리디렉트는 따르지 않음) -->
+<meta http-equiv="refresh" content="0; url=index.html">
+<link rel="canonical" href="https://logiccubeinc.github.io/homepage/index.html">
+<script>location.replace('index.html');</script>
+
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color: transparent; }
-  :root { color-scheme: only light; }
-  html, body {
-    height: 100%;
-    background: #001428;
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { height:100%; background:#001428; }
   body {
-    min-height: 100dvh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4vmin;
+    min-height:100dvh; display:flex; align-items:center; justify-content:center;
+    font-family:'Noto Sans KR',sans-serif; color:#ffffff;
   }
-  /* 명함 카드 — 클릭하면 회사 홈페이지로 이동 */
-  .card-link {
-    display: block;
-    line-height: 0;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 18px 50px rgba(0,0,0,0.45);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    cursor: pointer;
-  }
-  .card-link:hover,
-  .card-link:focus-visible {
-    transform: translateY(-4px);
-    box-shadow: 0 26px 64px rgba(0,0,0,0.55);
-    outline: none;
-  }
-  .card-link:active {
-    transform: translateY(-1px);
-  }
-  .card-link img {
-    display: block;
-    width: auto;
-    height: auto;
-    max-width: min(92vw, 720px);
-    max-height: 88dvh;
-  }
+  a { color:#00BFFF; }
 </style>
 </head>
 <body>
-  <a class="card-link"
-     href="index.html"
-     aria-label="로직큐브 회사 홈페이지로 이동">
-    <img src="public/images/shlee_kor_id.png?v=3"
-         width="1399" height="768"
-         alt="로직큐브 명함 - 금융 시스템의 가치를 실현하는 기업">
-  </a>
+  <!-- 자동 이동 실패 시를 위한 수동 링크 -->
+  <p>로직큐브 홈페이지로 이동 중입니다… 이동되지 않으면 <a href="index.html">여기를 클릭</a>하세요.</p>
 </body>
 </html>
