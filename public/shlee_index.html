@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>이승호 · LogicCube 수석연구원</title>
+<meta name="description" content="LogicCube 이승호 수석연구원 디지털 명함">
+<meta property="og:title" content="이승호 · LogicCube">
+<meta property="og:description" content="LogicCube 이승호 수석연구원 디지털 명함">
+<meta property="og:image" content="https://www.logiccube.co.kr/public/images/og_shlee.png?v=1">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="500">
+<style>
+  :root {
+    --bg: #171c24;
+    --bg-glow: #1f2733;
+    --card-shadow: rgba(0,0,0,.55);
+    --ink: #e8eaee;
+    --ink-dim: #9aa3b0;
+    --orange: #c26933;
+    --blue: #1b6fb6;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { height:100%; }
+  body {
+    background: radial-gradient(120% 90% at 50% 0%, var(--bg-glow) 0%, var(--bg) 60%);
+    color: var(--ink);
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    min-height:100dvh; padding: 28px 18px;
+    -webkit-text-size-adjust: 100%;
+  }
+  .wrap { width:100%; max-width:560px; text-align:center; }
+
+  .card {
+    width:100%; border-radius:14px; display:block;
+    box-shadow: 0 18px 50px var(--card-shadow), 0 2px 8px rgba(0,0,0,.4);
+    animation: rise .6s ease-out both;
+  }
+  @keyframes rise {
+    from { opacity:0; transform: translateY(14px); }
+    to   { opacity:1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card { animation: none; }
+  }
+
+  .stripe {
+    height:4px; width:120px; margin:30px auto 22px;
+    background: linear-gradient(to right, var(--orange) 50%, var(--blue) 50%);
+    border-radius:2px;
+  }
+
+  .actions {
+    display:grid; grid-template-columns: repeat(2, 1fr); gap:10px;
+  }
+  .actions a {
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    padding:14px 10px; border-radius:12px;
+    background:#222a36; color:var(--ink);
+    text-decoration:none; font-size:15px; font-weight:600;
+    border:1px solid #2e3947;
+  }
+  .actions a:active { background:#2a3442; }
+  .actions a.save {
+    grid-column: 1 / -1;
+    background: var(--blue);
+    border-color: transparent;
+  }
+  .actions a:focus-visible { outline:2px solid var(--blue); outline-offset:2px; }
+
+  .home {
+    margin-top:26px; font-size:13px;
+  }
+  .home a { color:var(--ink-dim); text-decoration:none; border-bottom:1px solid #39424f; padding-bottom:2px; }
+  .home a:hover { color:var(--ink); }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <img class="card" src="https://www.logiccube.co.kr/public/images/og_shlee.png?v=1"
+         alt="LogicCube 수석연구원 이승호 명함">
+
+    <div class="stripe" aria-hidden="true"></div>
+
+    <nav class="actions" aria-label="연락 수단">
+      <a id="phoneLink" href="#">📱 휴대폰</a>
+      <a id="emailLink" href="#">✉️ 이메일 보내기</a>
+      <a id="smsLink" href="#">💬 문자 보내기</a>
+      <a href="https://map.kakao.com/?q=서울시+송파구+법원로+11길+25+에이치비지니스파크" target="_blank" rel="noopener">📍 오시는 길</a>
+      <a class="save" id="saveContact" href="#">＋ 연락처 저장</a>
+    </nav>
+
+    <p class="home"><a href="https://www.logiccube.co.kr">logiccube.co.kr 홈페이지 보기 →</a></p>
+  </main>
+<script>
+(function(){
+  var p=['0','10','9','281','383','1'].join('');
+  var e=['sh','le','e','@','logic','cube','.c','o.kr'].join('');
+  var ph=document.getElementById('phoneLink');
+  var em=document.getElementById('emailLink');
+  var sm=document.getElementById('smsLink');
+  if(ph)ph.href='tel:'+p;
+  if(em)em.href='mailto:'+e;
+  if(sm)sm.href='sms:'+p;
+  var sc=document.getElementById('saveContact');
+  if(sc)sc.addEventListener('click',function(ev){
+    ev.preventDefault();
+    var w='02-6'+'281-8181';
+    var vc=[
+      'BEGIN:VCARD','VERSION:3.0',
+      'N:이;승호;;;','FN:이승호',
+      'ORG:LogicCube;','TITLE:수석연구원',
+      'TEL;TYPE=WORK,VOICE:'+w,
+      'TEL;TYPE=CELL,VOICE:'+p,
+      'EMAIL;TYPE=WORK:'+e,
+      'ADR;TYPE=WORK:;;법원로 11길 25 에이치비지니스파크 A동 1212호;서울시 송파구;;;대한민국',
+      'URL:https://www.logiccube.co.kr',
+      'END:VCARD'
+    ].join('\r\n');
+    var b=new Blob([vc],{type:'text/vcard;charset=utf-8'});
+    var u=URL.createObjectURL(b);
+    var a=document.createElement('a');
+    a.href=u;a.download='shlee_LogicCube.vcf';
+    document.body.appendChild(a);a.click();
+    document.body.removeChild(a);URL.revokeObjectURL(u);
+  });
+})();
+</script>
+</body>
+</html>
