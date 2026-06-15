@@ -1,53 +1,132 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- 라이트 전용 선언 — 삼성인터넷 등 인앱 브라우저의 강제 다크모드 반전 방지 -->
-<meta name="color-scheme" content="light">
-<!-- 제목도 비움 — og:title 이 비었을 때 카카오가 <title> 을 끌어다 미리보기에 제목 줄을 붙이는 것을 방지 (이 페이지는 즉시 리디렉트되므로 빈 제목이어도 무방) -->
-<title> </title>
-
-<!-- 주의: 이 페이지는 index.html로 즉시 리디렉트되는 명함 카드용입니다.
-     SEO description / naver-site-verification 은 본 홈페이지(index.html)에 있습니다.
-     여기에 meta description 을 두면 카카오/페북이 og:description 대신 이를 끌어다
-     미리보기에 회사 설명을 붙이므로, 명함 이미지만 노출하기 위해 의도적으로 제거함. -->
-
-<!-- Open Graph (KakaoTalk, Facebook, LinkedIn 미리보기) -->
-<!-- 제목/설명은 의도적으로 비움 — 미리보기에 명함 이미지만 깔끔하게 노출 -->
-<meta property="og:type" content="website">
-<!-- 제목은 채우고 설명만 빈 값으로 둠 — 카드는 유지(제목 있으므로)하면서 설명 줄을 없애기 위함.
-     설명 태그를 아예 빼면 카카오가 '여기를 눌러 링크를 확인하세요' 기본 문구를 넣으므로 반드시 빈 값으로 명시. -->
-<meta property="og:title" content="김진석 차장 | 로직큐브(주)">
-<meta property="og:description" content="">
+<title>김진석 · LogicCube 금융사업부</title>
+<meta name="description" content="LogicCube 김진석 차장 디지털 명함">
 <meta property="og:url" content="https://www.logiccube.co.kr/jskim_index.html">
-<!-- 미리보기 전용 이미지: 로고+이름+연락처를 큰 글씨로 재구성(1.91:1). 카카오 박스를 꽉 채우고 글씨가 크게 보이도록 함 -->
+<meta property="og:title" content="김진석 · LogicCube">
+<meta property="og:description" content="LogicCube 김진석 차장 디지털 명함">
 <meta property="og:image" content="https://www.logiccube.co.kr/public/images/og_jskim.png?v=1">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="628">
-<meta property="og:image:alt" content="김진석 차장 | 로직큐브(주) - Tel 02-6281-8181">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://www.logiccube.co.kr/public/images/og_jskim.png?v=1">
-
-<!-- 미리보기를 탭하면 곧바로 회사 홈페이지로 이동 (크롤러는 위 OG 태그만 읽고 리디렉트는 따르지 않음) -->
-<meta http-equiv="refresh" content="0; url=index.html">
-<link rel="canonical" href="https://www.logiccube.co.kr/index.html">
-<script>location.replace('index.html');</script>
-
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="500">
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html, body { height:100%; background:#001428; }
-  body {
-    min-height:100dvh; display:flex; align-items:center; justify-content:center;
-    font-family:'Noto Sans KR',sans-serif; color:#ffffff;
+  :root {
+    --bg: #171c24;
+    --bg-glow: #1f2733;
+    --card-shadow: rgba(0,0,0,.55);
+    --ink: #e8eaee;
+    --ink-dim: #9aa3b0;
+    --orange: #c26933;
+    --blue: #1b6fb6;
   }
-  a { color:#00BFFF; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { height:100%; }
+  body {
+    background: radial-gradient(120% 90% at 50% 0%, var(--bg-glow) 0%, var(--bg) 60%);
+    color: var(--ink);
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    min-height:100dvh; padding: 28px 18px;
+    -webkit-text-size-adjust: 100%;
+  }
+  .wrap { width:100%; max-width:560px; text-align:center; }
+
+  .card {
+    width:100%; border-radius:14px; display:block;
+    box-shadow: 0 18px 50px var(--card-shadow), 0 2px 8px rgba(0,0,0,.4);
+    animation: rise .6s ease-out both;
+  }
+  @keyframes rise {
+    from { opacity:0; transform: translateY(14px); }
+    to   { opacity:1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card { animation: none; }
+  }
+
+  .stripe {
+    height:4px; width:120px; margin:30px auto 22px;
+    background: linear-gradient(to right, var(--orange) 50%, var(--blue) 50%);
+    border-radius:2px;
+  }
+
+  .actions {
+    display:grid; grid-template-columns: repeat(2, 1fr); gap:10px;
+  }
+  .actions a {
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    padding:14px 10px; border-radius:12px;
+    background:#222a36; color:var(--ink);
+    text-decoration:none; font-size:15px; font-weight:600;
+    border:1px solid #2e3947;
+  }
+  .actions a:active { background:#2a3442; }
+  .actions a.save {
+    grid-column: 1 / -1;
+    background: var(--blue);
+    border-color: transparent;
+  }
+  .actions a:focus-visible { outline:2px solid var(--blue); outline-offset:2px; }
+
+  .home {
+    margin-top:26px; font-size:13px;
+  }
+  .home a { color:var(--ink-dim); text-decoration:none; border-bottom:1px solid #39424f; padding-bottom:2px; }
+  .home a:hover { color:var(--ink); }
 </style>
 </head>
 <body>
-  <!-- 자동 이동 실패 시를 위한 수동 링크 -->
-  <p>로직큐브 홈페이지로 이동 중입니다… 이동되지 않으면 <a href="index.html">여기를 클릭</a>하세요.</p>
+  <main class="wrap">
+    <img class="card" src="https://www.logiccube.co.kr/public/images/og_jskim.png?v=1"
+         alt="LogicCube 금융사업부 김진석 명함">
+
+    <div class="stripe" aria-hidden="true"></div>
+
+    <nav class="actions" aria-label="연락 수단">
+      <a id="phoneLink" href="#">📱 휴대폰</a>
+      <a id="emailLink" href="#">✉️ 이메일 보내기</a>
+      <a id="smsLink" href="#">💬 문자 보내기</a>
+      <a href="https://map.kakao.com/?q=서울시+송파구+법원로+11길+25+에이치비지니스파크" target="_blank" rel="noopener">📍 오시는 길</a>
+      <a class="save" id="saveContact" href="#">＋ 연락처 저장</a>
+    </nav>
+
+    <p class="home"><a href="https://www.logiccube.co.kr">logiccube.co.kr 홈페이지 보기 →</a></p>
+  </main>
+<script>
+(function(){
+  var p=['0','10','4','862','222','1'].join('');
+  var e=['js','kim','@','logic','cube','.c','o.kr'].join('');
+  var ph=document.getElementById('phoneLink');
+  var em=document.getElementById('emailLink');
+  var sm=document.getElementById('smsLink');
+  if(ph)ph.href='tel:'+p;
+  if(em)em.href='mailto:'+e;
+  if(sm)sm.href='sms:'+p;
+  var sc=document.getElementById('saveContact');
+  if(sc)sc.addEventListener('click',function(ev){
+    ev.preventDefault();
+    var w='02-6'+'281-8181';
+    var vc=[
+      'BEGIN:VCARD','VERSION:3.0',
+      'N:김;진석;;;','FN:김진석',
+      'ORG:LogicCube;','TITLE:금융사업부',
+      'TEL;TYPE=WORK,VOICE:'+w,
+      'TEL;TYPE=CELL,VOICE:'+p,
+      'EMAIL;TYPE=WORK:'+e,
+      'ADR;TYPE=WORK:;;법원로 11길 25 에이치비지니스파크 A동 1212호;서울시 송파구;;;대한민국',
+      'URL:https://www.logiccube.co.kr',
+      'END:VCARD'
+    ].join('\r\n');
+    var b=new Blob([vc],{type:'text/vcard;charset=utf-8'});
+    var u=URL.createObjectURL(b);
+    var a=document.createElement('a');
+    a.href=u;a.download='jskim_LogicCube.vcf';
+    document.body.appendChild(a);a.click();
+    document.body.removeChild(a);URL.revokeObjectURL(u);
+  });
+})();
+</script>
 </body>
 </html>
