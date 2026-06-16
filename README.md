@@ -3,6 +3,7 @@ LOGICCUBE's New HomePage is under construction
 www.logiccube.co.kr 은 예스닉을 통해 domain 등록되어 있습니다.
 
 https://yesnic.com/ 로그인후 
+<pre>
 네임서버 고급설정 >> CNAME 레코드 관리를 통해 현재의 github에 등록된 index.html로 연결됩니다.
 
 << 설정1 >>
@@ -13,9 +14,8 @@ https://yesnic.com/ 로그인후
 호스트명 (또는 서브도메인): www <br>
 
 CNAME (또는 연결주소): logiccubeinc.github.io
-
 <img width="731" height="519" alt="image" src="https://github.com/user-attachments/assets/a8ae917b-4d5b-40fa-a852-4b9e57dc6d2f" />
-<pre>
+
 << 설정2 >><br>
 1단계: <br>
 예스닉에서 A 레코드 추가하기예전에 방문하셨던 [네임서버 고급설정 > DNS 관리] 
