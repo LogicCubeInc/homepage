@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- shlee_index.html v2.0 · 2026.06.18 -->
+<!-- shlee_index.html v2.1 · 2026.06.18 -->
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
@@ -83,15 +83,8 @@
   .home a { color:var(--ink-dim); text-decoration:none; border-bottom:1px solid #39424f; padding-bottom:2px; }
   .home a:hover { color:var(--ink); }
 
-  /* 카카오톡 인앱에서는 저장 버튼 숨김, 안내만 노출 */
+  /* 카카오톡 인앱에서는 연락처 저장 버튼 숨김 */
   body.is-kakao #saveContact { display:none; }
-
-  .kakao-tip {
-    margin-top:10px; padding:14px 16px; border-radius:12px;
-    background:#2a2410; border:1px solid #5a4a1c; color:#f0d99a;
-    font-size:13.5px; line-height:1.55; text-align:center;
-  }
-  .kakao-tip b { color:#ffe9a8; }
 
   .ver { margin-top:14px; font-size:11px; color:#525d6b; letter-spacing:.5px; }
 </style>
@@ -111,28 +104,23 @@
       <a class="save" id="saveContact" href="#">＋ 연락처 저장</a>
     </nav>
 
-    <div class="kakao-tip" id="kakaoTip" hidden>
-      📇 연락처 저장은 카카오톡에서 지원되지 않습니다.<br>
-      우측 상단 <b>⋮</b> → <b>다른 브라우저로 열기</b> 후 이용해 주세요.
-    </div>
-
     <p class="home"><a href="https://www.logiccube.co.kr">logiccube.co.kr 홈페이지 둘러보기 →</a></p>
     <p class="ver" id="page-ver"></p>
   </main>
 <script>
 (function(){
-  var PAGE_VER = 'v2.0 \u00b7 2026.06.18';
+  var PAGE_VER = 'v2.1 \u00b7 2026.06.18';
   console.log('shlee_index ' + PAGE_VER);
   var pv = document.getElementById('page-ver');
   if (pv) pv.textContent = PAGE_VER;
 
   // 한글 포함 base64 안전 디코딩 (UTF-8)
   function dec(s){ return decodeURIComponent(escape(atob(s))); }
-  var f = dec(['7J20'].join(''));                                //
-  var n = dec(['7Iq57Z','i4'].join(''));                         //
-  var p = dec(['Kz','gyMTA5MjgxMzgzMQ','=='].join(''));          //
-  var e = dec(['c2hsZ','WVAbG9naWNjdWJlLmNvLmt','y'].join(''));  //
-  var w = dec('MDItNjI4MS04MTgx');                               //
+  var f = dec(['7J20'].join(''));                                // 이
+  var n = dec(['7Iq57Z','i4'].join(''));                         // 승호
+  var p = dec(['Kz','gyMTA5MjgxMzgzMQ','=='].join(''));          // +821092813831
+  var e = dec(['c2hsZ','WVAbG9naWNjdWJlLmNvLmt','y'].join(''));  // shlee@logiccube.co.kr
+  var w = dec('MDItNjI4MS04MTgx');                               // 02-6281-8181
 
   var ph = document.getElementById('phoneLink');
   var em = document.getElementById('emailLink');
@@ -163,13 +151,11 @@
   // 카카오톡 인앱 브라우저 감지 (vcf 다운로드가 막히는 환경)
   var isKakao = /KAKAOTALK/i.test(ua);
 
-  var tip = document.getElementById('kakaoTip');
   var sc = document.getElementById('saveContact');
 
-  // 카카오톡 인앱: 저장 버튼 숨기고 안내 배너만 노출
+  // 카카오톡 인앱: 연락처 저장 버튼 숨김 (vcf 저장 미지원 환경)
   if (isKakao) {
     document.body.classList.add('is-kakao');
-    if (tip) tip.hidden = false;
   }
 
   if (sc) sc.addEventListener('click', function(ev){
