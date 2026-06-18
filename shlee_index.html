@@ -1,19 +1,24 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
+<!-- shlee_index.html v1.8 · 2026.06.18 -->
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
 <title>이승호 · LogicCube 수석연구원</title>
 <meta name="description" content="LogicCube 이승호 부장 디지털 명함">
+<meta property="og:type" content="website">
 <meta property="og:url" content="https://www.logiccube.co.kr/shlee_index.html">
 <meta property="og:title" content="LogicCube · 수석연구원">
 <meta property="og:description" content="부장 이승호 디지털 명함">
-<meta property="og:image" content="https://www.logiccube.co.kr/public/images/og_shlee.png?v=3">
+<meta property="og:image" content="https://www.logiccube.co.kr/public/images/og_shlee.png?v=4">
 <meta property="og:image:width" content="800">
 <meta property="og:image:height" content="500">
+<meta name="twitter:card" content="summary_large_image">
 <style>
   :root {
-    --bg: #171c24;
+    --bg: #008050;
     --bg-glow: #1f2733;
     --card-shadow: rgba(0,0,0,.55);
     --ink: #e8eaee;
@@ -48,6 +53,7 @@
 
   .stripe {
     height:4px; width:120px; margin:30px auto 22px;
+    padding:8px 0; background-clip:content-box;
     background: linear-gradient(to right, var(--orange) 50%, var(--blue) 50%);
     border-radius:2px;
   }
@@ -61,6 +67,7 @@
     background:#222a36; color:var(--ink);
     text-decoration:none; font-size:15px; font-weight:600;
     border:1px solid #2e3947;
+    cursor:pointer;
   }
   .actions a:active { background:#2a3442; }
   .actions a.save {
@@ -71,10 +78,12 @@
   .actions a:focus-visible { outline:2px solid var(--blue); outline-offset:2px; }
 
   .home {
-    margin-top:26px; font-size:13px;
+    margin-top:26px; font-size:15.6px;
   }
   .home a { color:var(--ink-dim); text-decoration:none; border-bottom:1px solid #39424f; padding-bottom:2px; }
   .home a:hover { color:var(--ink); }
+
+  .ver { margin-top:14px; font-size:11px; color:#525d6b; letter-spacing:.5px; }
 </style>
 </head>
 <body>
@@ -92,45 +101,74 @@
       <a class="save" id="saveContact" href="#">＋ 연락처 저장</a>
     </nav>
 
-    <p class="home"><a href="https://www.logiccube.co.kr">logiccube.co.kr 홈페이지 보기 →</a></p>
+    <p class="home"><a href="https://www.logiccube.co.kr">logiccube.co.kr 홈페이지 둘러보기 →</a></p>
+    <p class="ver" id="page-ver"></p>
   </main>
 <script>
 (function(){
-  var fb=['7J20'].join('');
-  var f=atob(fb);
-  var nb=['7Iq57Z','i4'].join('');
-  var n=atob(nb);
-  var pb=['Kz','gyMTA5MjgxMzgzMQ','=='].join('');
-  var p=atob(pb);
-  var eb=['c2hsZ','WVAbG9naWNjdWJlLmNvLmt','y'].join('');
-  var e=atob(eb);
-  var ph=document.getElementById('phoneLink');
-  var em=document.getElementById('emailLink');
-  var sm=document.getElementById('smsLink');
-  if(ph)ph.href='tel:'+p;
-  if(em)em.href='mailto:'+e;
-  if(sm)sm.href='sms:'+p;
-  var sc=document.getElementById('saveContact');
-  if(sc)sc.addEventListener('click',function(ev){
-    ev.preventDefault();
-    var w=atob('MDItNjI4MS04MTgx');
-    var vc=[
+  var PAGE_VER = 'v1.8 \u00b7 2026.06.18';
+  console.log('shlee_index ' + PAGE_VER);
+  var pv = document.getElementById('page-ver');
+  if (pv) pv.textContent = PAGE_VER;
+
+  // 안전 디코딩 (UTF-8)
+  function dec(s){ return decodeURIComponent(escape(atob(s))); }
+  var f = dec(['7J20'].join(''));                                // 
+  var n = dec(['7Iq57Z','i4'].join(''));                         // 
+  var p = dec(['Kz','gyMTA5MjgxMzgzMQ','=='].join(''));          // 
+  var e = dec(['c2hsZ','WVAbG9naWNjdWJlLmNvLmt','y'].join(''));  // 
+  var w = dec('MDItNjI4MS04MTgx');                               // 
+
+  var ph = document.getElementById('phoneLink');
+  var em = document.getElementById('emailLink');
+  var sm = document.getElementById('smsLink');
+  if (ph) ph.href = 'tel:' + p;
+  if (em) em.href = 'mailto:' + e;
+  if (sm) sm.href = 'sms:' + p;
+
+  function buildVCard(){
+    return [
       'BEGIN:VCARD','VERSION:3.0',
-      'N:'+f+';'+n+';;;','FN:'+f+n,
-      'ORG:LogicCube;','TITLE:수석연구원',
-      'TEL;TYPE=WORK,VOICE:'+w,
-      'TEL;TYPE=CELL,VOICE:'+p,
-      'EMAIL;TYPE=WORK:'+e,
+      'N:' + f + ';' + n + ';;;',
+      'FN:' + f + n,
+      'ORG:LogicCube',
+      'TITLE:수석연구원',
+      'TEL;TYPE=CELL,VOICE:' + p,
+      'TEL;TYPE=WORK,VOICE:' + w,
+      'EMAIL;TYPE=WORK:' + e,
       'ADR;TYPE=WORK:;;법원로 11길 25 에이치비지니스파크 A동 1212호;서울시 송파구;;;대한민국',
       'URL:https://www.logiccube.co.kr',
       'END:VCARD'
     ].join('\r\n');
-    var b=new Blob([vc],{type:'text/vcard;charset=utf-8'});
-    var u=URL.createObjectURL(b);
-    var a=document.createElement('a');
-    a.href=u;a.download='shlee_LogicCube.vcf';
-    document.body.appendChild(a);a.click();
-    document.body.removeChild(a);URL.revokeObjectURL(u);
+  }
+
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPad|iPhone|iPod/.test(ua) ||
+              (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+  var sc = document.getElementById('saveContact');
+  if (sc) sc.addEventListener('click', function(ev){
+    ev.preventDefault();
+    var vc = buildVCard();
+
+    // iOS / 인앱 브라우저는 blob 다운로드를 무시하므로 data URL로 직접 이동
+    if (isIOS) {
+      window.location.href = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vc);
+      return;
+    }
+
+    // Android / PC: blob 다운로드, 실패 시 data URL 폴백
+    try {
+      var b = new Blob([vc], {type:'text/vcard;charset=utf-8'});
+      var u = URL.createObjectURL(b);
+      var a = document.createElement('a');
+      a.href = u; a.download = 'shlee_LogicCube.vcf';
+      document.body.appendChild(a); a.click();
+      document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(u); }, 1500);
+    } catch (err) {
+      window.location.href = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vc);
+    }
   });
 })();
 </script>
