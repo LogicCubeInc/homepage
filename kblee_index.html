@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<!-- kblee_index.html v2.1 · 2026.06.18 -->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>이경범 · LogicCube 대표이사</title>
+<meta name="description" content="LogicCube 이경범 대표이사 디지털 명함">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.logiccube.co.kr/kblee_index.html">
+<meta property="og:title" content="로직큐브(주)">
+<meta property="og:description" content="대표이사 이경범 디지털 명함">
+<meta property="og:image" content="https://www.logiccube.co.kr/public/images/og_kblee.png?v=3">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="500">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root {
+    --bg: #171c24;
+    --bg-glow: #1f2733;
+    --card-shadow: rgba(0,0,0,.55);
+    --ink: #e8eaee;
+    --ink-dim: #9aa3b0;
+    --orange: #c26933;
+    --blue: #1b6fb6;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { height:100%; }
+  body {
+    background: radial-gradient(120% 90% at 50% 0%, var(--bg-glow) 0%, var(--bg) 60%);
+    color: var(--ink);
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    min-height:100dvh; padding: 28px 18px;
+    -webkit-text-size-adjust: 100%;
+  }
+  .wrap { width:100%; max-width:560px; text-align:center; }
+
+  .card {
+    width:100%; border-radius:14px; display:block;
+    box-shadow: 0 18px 50px var(--card-shadow), 0 2px 8px rgba(0,0,0,.4);
+    animation: rise .6s ease-out both;
+  }
+  @keyframes rise {
+    from { opacity:0; transform: translateY(14px); }
+    to   { opacity:1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card { animation: none; }
+  }
+
+  .stripe {
+    height:4px; width:120px; margin:30px auto 22px;
+    padding:8px 0; background-clip:content-box;
+    background: linear-gradient(to right, var(--orange) 50%, var(--blue) 50%);
+    border-radius:2px;
+  }
+
+  .actions {
+    display:grid; grid-template-columns: repeat(2, 1fr); gap:10px;
+  }
+  .actions a {
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    padding:14px 10px; border-radius:12px;
+    background:#222a36; color:var(--ink);
+    text-decoration:none; font-size:15px; font-weight:600;
+    border:1px solid #2e3947;
+    cursor:pointer;
+  }
+  .actions a:active { background:#2a3442; }
+  .actions a.save {
+    grid-column: 1 / -1;
+    background: var(--blue);
+    border-color: transparent;
+  }
+  .actions a:focus-visible { outline:2px solid var(--blue); outline-offset:2px; }
+
+  .home {
+    margin-top:26px; font-size:15.6px;
+  }
+  .home a { color:var(--ink-dim); text-decoration:none; border-bottom:1px solid #39424f; padding-bottom:2px; }
+  .home a:hover { color:var(--ink); }
+
+  /* 카카오톡 인앱에서는 연락처 저장 버튼 숨김 */
+  body.is-kakao #saveContact { display:none; }
+
+  .ver { margin-top:14px; font-size:11px; color:#525d6b; letter-spacing:.5px; }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <img class="card" src="https://www.logiccube.co.kr/public/images/og_kblee.png?v=1"
+         alt="LogicCube 대표이사 이경범 명함">
+
+    <div class="stripe" aria-hidden="true"></div>
+
+    <nav class="actions" aria-label="연락 수단">
+      <a id="phoneLink" href="#">📱 휴대폰</a>
+      <a id="emailLink" href="#">✉️ 이메일 보내기</a>
+      <a id="smsLink" href="#">💬 문자 보내기</a>
+      <a href="https://map.kakao.com/?q=서울시+송파구+법원로+11길+25+에이치비지니스파크" target="_blank" rel="noopener">📍 오시는 길</a>
+      <a class="save" id="saveContact" href="#">＋ 연락처 저장</a>
+    </nav>
+
+    <p class="home"><a href="https://www.logiccube.co.kr">logiccube.co.kr 홈페이지 둘러보기 →</a></p>
+    <p class="ver" id="page-ver"></p>
+  </main>
+<script>
+(function(){
+  var PAGE_VER = 'v2.1 \u00b7 2026.06.18';
+  console.log('kblee_index ' + PAGE_VER);
+  var pv = document.getElementById('page-ver');
+  if (pv) pv.textContent = PAGE_VER;
+
+  // 한글 포함 base64 안전 디코딩 (UTF-8)
+  function dec(s){ return decodeURIComponent(escape(atob(s))); }
+  var f = dec(['7J20'].join(''));                                //
+  var n = dec(['6rK967','KU'].join(''));                         // 
+  var p = dec(['Kz','gyMTAzMTMyMTg0Mw','=='].join(''));          // 
+  var e = dec(['dnJ','0cmFkZTIxQGtvcmVhLmNvbQ','=='].join(''));  // 
+  var w = dec('MDItNjI4MS04MTgx');                               // 
+
+  var ph = document.getElementById('phoneLink');
+  var em = document.getElementById('emailLink');
+  var sm = document.getElementById('smsLink');
+  if (ph) ph.href = 'tel:' + p;
+  if (em) em.href = 'mailto:' + e;
+  if (sm) sm.href = 'sms:' + p;
+
+  function buildVCard(){
+    return [
+      'BEGIN:VCARD','VERSION:3.0',
+      'N:' + f + ';' + n + ';;;',
+      'FN:' + f + n,
+      'ORG:LogicCube',
+      'TITLE:대표이사',
+      'TEL;TYPE=CELL,VOICE:' + p,
+      'TEL;TYPE=WORK,VOICE:' + w,
+      'EMAIL;TYPE=WORK:' + e,
+      'ADR;TYPE=WORK:;;법원로 11길 25 에이치비지니스파크 A동 1212호;서울시 송파구;;;대한민국',
+      'URL:https://www.logiccube.co.kr',
+      'END:VCARD'
+    ].join('\r\n');
+  }
+
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPad|iPhone|iPod/.test(ua) ||
+              (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  // 카카오톡 인앱 브라우저 감지 (vcf 다운로드가 막히는 환경)
+  var isKakao = /KAKAOTALK/i.test(ua);
+
+  var sc = document.getElementById('saveContact');
+
+  // 카카오톡 인앱: 연락처 저장 버튼 숨김 (vcf 저장 미지원 환경)
+  if (isKakao) {
+    document.body.classList.add('is-kakao');
+  }
+
+  if (sc) sc.addEventListener('click', function(ev){
+    ev.preventDefault();
+    var vc = buildVCard();
+
+    // iOS: data URL로 직접 이동해야 연락처 카드가 열림
+    if (isIOS) {
+      window.location.href = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vc);
+      return;
+    }
+
+    // Android / PC 정식 브라우저: blob 다운로드, 실패 시 data URL 폴백
+    try {
+      var b = new Blob([vc], {type:'text/vcard;charset=utf-8'});
+      var u = URL.createObjectURL(b);
+      var a = document.createElement('a');
+      a.href = u; a.download = 'kblee_LogicCube.vcf';
+      document.body.appendChild(a); a.click();
+      document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(u); }, 1500);
+    } catch (err) {
+      window.location.href = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vc);
+    }
+  });
+})();
+</script>
+</body>
+</html>
