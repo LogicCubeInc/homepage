@@ -96,41 +96,77 @@
   </main>
 <script>
 (function(){
-  var fb=['6rmA'].join('');
-  var f=atob(fb);
-  var nb=['7KeE7I','Sd'].join('');
-  var n=atob(nb);
-  var pb=['MD','EwNDg2MjI','yMjE='].join('');
-  var p=atob(pb);
-  var eb=['anN','raW1AbG9naWNjdWJlLmNvLmty'].join('');
-  var e=atob(eb);
-  var ph=document.getElementById('phoneLink');
-  var em=document.getElementById('emailLink');
-  var sm=document.getElementById('smsLink');
-  if(ph)ph.href='tel:'+p;
-  if(em)em.href='mailto:'+e;
-  if(sm)sm.href='sms:'+p;
-  var sc=document.getElementById('saveContact');
-  if(sc)sc.addEventListener('click',function(ev){
-    ev.preventDefault();
-    var w=atob('MDEwNDg2MjIyMjE=');
-    var vc=[
+  var PAGE_VER = 'v2.1 \u00b7 2026.06.18';
+  console.log('shlee_index ' + PAGE_VER);
+  var pv = document.getElementById('page-ver');
+  if (pv) pv.textContent = PAGE_VER;
+
+  // 한글 포함 base64 안전 디코딩 (UTF-8)
+  function dec(s){ return decodeURIComponent(escape(atob(s))); }
+  var f = dec(['6rmA'].join(''));                                // 
+  var n = dec(['7KeE7I','Sd'].join(''));                         // 
+  var p = dec(['MD','EwNDg2MjI','yMjE','='].join(''));           // 
+  var e = dec(['anN','raW1AbG9naWNjdWJlLmNvLmty'].join(''));     // 
+  var w = dec('MDItNjI4MS04MTgx');                               // 
+
+  var ph = document.getElementById('phoneLink');
+  var em = document.getElementById('emailLink');
+  var sm = document.getElementById('smsLink');
+  if (ph) ph.href = 'tel:' + p;
+  if (em) em.href = 'mailto:' + e;
+  if (sm) sm.href = 'sms:' + p;
+
+  function buildVCard(){
+    return [
       'BEGIN:VCARD','VERSION:3.0',
-      'N:'+f+';'+n+';;;','FN:'+f+n,
-      'ORG:LogicCube;','TITLE:금융사업부',
-      'TEL;TYPE=WORK,VOICE:'+w,
-      'TEL;TYPE=CELL,VOICE:'+p,
-      'EMAIL;TYPE=WORK:'+e,
+      'N:' + f + ';' + n + ';;;',
+      'FN:' + f + n,
+      'ORG:LogicCube',
+      'TITLE:금융사업부',
+      'TEL;TYPE=CELL,VOICE:' + p,
+      'TEL;TYPE=WORK,VOICE:' + w,
+      'EMAIL;TYPE=WORK:' + e,
       'ADR;TYPE=WORK:;;법원로 11길 25 에이치비지니스파크 A동 1212호;서울시 송파구;;;대한민국',
       'URL:https://www.logiccube.co.kr',
       'END:VCARD'
     ].join('\r\n');
-    var b=new Blob([vc],{type:'text/vcard;charset=utf-8'});
-    var u=URL.createObjectURL(b);
-    var a=document.createElement('a');
-    a.href=u;a.download='jskim_LogicCube.vcf';
-    document.body.appendChild(a);a.click();
-    document.body.removeChild(a);URL.revokeObjectURL(u);
+  }
+
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPad|iPhone|iPod/.test(ua) ||
+              (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  // 카카오톡 인앱 브라우저 감지 (vcf 다운로드가 막히는 환경)
+  var isKakao = /KAKAOTALK/i.test(ua);
+
+  var sc = document.getElementById('saveContact');
+
+  // 카카오톡 인앱: 연락처 저장 버튼 숨김 (vcf 저장 미지원 환경)
+  if (isKakao) {
+    document.body.classList.add('is-kakao');
+  }
+
+  if (sc) sc.addEventListener('click', function(ev){
+    ev.preventDefault();
+    var vc = buildVCard();
+
+    // iOS: data URL로 직접 이동해야 연락처 카드가 열림
+    if (isIOS) {
+      window.location.href = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vc);
+      return;
+    }
+
+    // Android / PC 정식 브라우저: blob 다운로드, 실패 시 data URL 폴백
+    try {
+      var b = new Blob([vc], {type:'text/vcard;charset=utf-8'});
+      var u = URL.createObjectURL(b);
+      var a = document.createElement('a');
+      a.href = u; a.download = 'shlee_LogicCube.vcf';
+      document.body.appendChild(a); a.click();
+      document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(u); }, 1500);
+    } catch (err) {
+      window.location.href = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vc);
+    }
   });
 })();
 </script>
